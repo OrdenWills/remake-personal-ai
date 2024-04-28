@@ -1,0 +1,6 @@
+click
+Flask
+gunicorn
+google-generativeai
+Markdown
+python-dotenv
