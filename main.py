@@ -73,5 +73,5 @@ def register():
 #     return render_template('chat-bot-welcome.html')
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
 
