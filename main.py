@@ -1,7 +1,7 @@
 import markdown
 from dotenv import load_dotenv
 import os
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, url_for, redirect
 import google.generativeai as genai
 
 
@@ -37,10 +37,14 @@ def home():
     return render_template('chat-bot-welcome.html')
 
 
-@app.route("/home", methods=["POST","GET"])
+@app.route("/home", methods=["GET"])
 def chat():
-    
-    # Get the user's prompt from the request body
+    # Get the user's prompt from the request body    
+    return render_template('chat-bot.html',conversations=conversations_history)
+
+@app.route("/process", methods=["POST"])
+def processchat():
+    # Get the user's message from the request body
     if request.method == 'POST':
         # print('seennnnnnnn')
         user_input = request.form['user_input']
@@ -48,8 +52,8 @@ def chat():
 
         conversations_history.append({'role': 'user','text': user_input})
         conversations_history.append({'role': 'model','text': to_mark(chat.text)})
-        
-    return render_template('chat-bot.html',conversations=conversations_history)
+        # Return the response to the user
+        return redirect(url_for('chat'))
 
 @app.route("/login", methods=["GET","POST"])
 def login():
