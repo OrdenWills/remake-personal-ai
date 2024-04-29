@@ -8528,8 +8528,8 @@ button {
 }
 
 .my-1 {
-  margin-top: 0.25rem !important;
-  margin-bottom: 0.25rem !important;
+  /* margin-top: 0.25rem !important; */
+  margin-bottom: 15px !important;
 }
 
 .my-2 {

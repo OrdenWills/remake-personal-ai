@@ -69,6 +69,14 @@ def register():
     # Return the response to the user
     return render_template('register.html')
 
+@app.route("/forgot", methods=["GET","POST"])
+def forgot():
+    # Get the user's message from the request body
+
+    # Return the response to the user
+    return render_template('forgot.html')
+
+
 # @app.route("/logout", methods=["GET"])
 # def conversation():
 #     # Get the user's message from the request body
