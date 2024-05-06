@@ -154,7 +154,7 @@ dl {
 }
 .tyn-logo {
   display: inline-flex;
-  height: 32px;
+  height: 80px;
 }
 .tyn-logo svg, .tyn-logo img {
   height: 100%;
@@ -245,7 +245,7 @@ dl {
 @media (min-width: 768px) {
   .tyn-logo {
     display: inline-flex;
-    height: 40px;
+    height: 80px;
   }
   .tyn-logo-sm {
     height: 32px;
