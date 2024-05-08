@@ -17,7 +17,7 @@ def init_model():
     genai.configure(api_key=GOOGLE_API_KEY)
 
         # initialize the model
-    model = genai.GenerativeModel('gemini-pro')
+    model = genai.GenerativeModel('models/gemini-1.5-pro-latest')
     conversations = model.start_chat(history=[])
     return conversations
 
@@ -48,7 +48,14 @@ def processchat():
     if request.method == 'POST':
         # print('seennnnnnnn')
         user_input = request.form['user_input']
-        chat = conversations.send_message(user_input)
+        chat = conversations.send_message(
+            user_input,
+            safety_settings={
+                'HATE': 'BLOCK_NONE',
+                'HARASSMENT': 'BLOCK_NONE',
+                'SEXUAL' : 'BLOCK_NONE',
+                'DANGEROUS' : 'BLOCK_NONE'}
+            )
 
         conversations_history.append({'role': 'user','text': user_input})
         conversations_history.append({'role': 'model','text': to_mark(chat.text)})
